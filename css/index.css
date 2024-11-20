@@ -1,0 +1,160 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    /* 添加平滑的背景色过渡效果 */
+    transition: background-color 0.3s ease;
+}
+
+/* 页面主体样式 */
+body {
+    /* 使用弹性布局居中内容 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 设置页面高度为视口高度 */
+    height: 100vh;
+    /* 设置初始背景色（深色模式） */
+    background-color: rgb(30, 41, 59);
+}
+
+/* 开关按钮样式 */
+.game-switch {
+    /* 设置开关的尺寸 */
+    width: 80px;
+    height: 80px;
+    /* 设置初始背景色（代表太阳） */
+    background-color: #f1c40f;
+    /* 使用圆形边框 */
+    border-radius: 50%;
+    /* 设置相对定位，用于伪元素定位 */
+    position: relative;
+    /* 设置鼠标悬停样式 */
+    cursor: pointer;
+    /* 添加发光效果 */
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+    /* 添加过渡效果 */
+    transition: all 0.3s ease;
+}
+
+/* 开关按钮的伪元素（用于创建月亮效果） */
+.game-switch::before {
+    /* 创建伪元素 */
+    content: '';
+    /* 设置绝对定位 */
+    position: absolute;
+    /* 调整位置，使其偏离中心 */
+    top: -10%;
+    right: -10%;
+    /* 设置与父元素相同的尺寸 */
+    width: 100%;
+    height: 100%;
+    /* 设置初始背景色（深色，代表月亮的阴影部分） */
+    background-color: rgb(30, 41, 59);
+    /* 使用圆形边框 */
+    border-radius: 50%;
+    /* 添加过渡效果 */
+    transition: all 0.3s ease;
+}
+
+/* 夜间模式下的开关样式 */
+.game-switch.night {
+    /* 更改背景色为深色（代表夜空） */
+    background-color: #34495e;
+    /* 更改发光效果 */
+    box-shadow: 0 0 20px rgba(52, 73, 94, 0.5);
+}
+
+/* 夜间模式下开关伪元素的样式 */
+.game-switch.night::before {
+    /* 更改背景色为亮色（代表月亮表面） */
+    background-color: #f1c40f;
+    /* 缩小并移动伪元素，创造弦月效果 */
+    transform: scale(0.8) translate(20%, -20%);
+}
+
+/* 日间模式下的页面背景 */
+body.day-mode {
+    /* 更改背景为浅色 */
+    background-color: #f0f0f0;
+}
+/* 白夜切换 */
+
+.typewriter-game{
+    width: 779px;
+    height: 350px;
+    margin: auto;
+    margin-top: 200px;
+}
+.typewriter-game>span{
+    color: rgb(229, 189, 27);
+    font-family: monospace;
+}
+
+
+
+.typewriter-text p {
+    font-size: 21px;
+    color: rgb(100, 117, 139);
+    font-family: monospace;
+    line-height: 35px;
+}
+.game-action{
+    display: flex;
+   
+    padding-top: 70px;
+   
+    margin: auto;
+}
+.game-action button{
+    width: 85px;
+    height: 25px;
+    background-color: rgb(100, 117, 139);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.game-action button:hover{
+    background-color: #e0a800;
+}
+.game-action button:active{
+    background-color: #c88e00;
+}
+
+
+.char {
+    font-family: monospace;
+    font-size: 21px;
+    line-height: 35px;
+    color: rgb(100, 117, 139);
+}
+/* 定义光标的样式 */
+.cursor {
+    display: inline-block;
+    color: rgb(229, 189, 27); /* 设置光标的颜色为 RGB(229, 189, 27) */
+    margin-top: 10px;
+    /* 设置动画效果 */
+    animation: blink 1s infinite; /* 应用 blink 动画，持续时间为 1 秒，重复无限次 */
+}
+.char.correct {
+    color: rgb(229, 189, 27);
+}
+.char.incorrect {
+    color: red;
+    text-decoration: underline;
+}
+.char.current {
+    color: rgb(100, 117, 139);
+}
+/* 定义 blink 动画效果 */
+@keyframes blink {
+    0%, 100% { 
+        opacity: 1; /* 在动画的开始和结束时，光标的透明度为 1，表示完全可见 */
+    }
+    50% { 
+        opacity: 0; /* 在动画的一半时，光标的透明度为 0，表示完全不可见 */
+    }
+}
