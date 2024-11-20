@@ -1,9 +1,13 @@
-import { GameSwitch}   from "./GameSwitch.js";
+import { GameSwitch } from "./GameSwitch.js";
+import { randomText as readText} from "./TypewriteText.js";
+
 const gameSwitch = document.querySelector('.game-switch');
 const body = document.body;
 //  日夜模式切换
 new GameSwitch(gameSwitch, body);
-
+ 
+const randomText = readText()
+document.querySelector('.typewriter-text').textContent = randomText;
 
 const typewriterText = document.querySelector('.typewriter-text');
 const originalText = typewriterText.textContent.trim();
