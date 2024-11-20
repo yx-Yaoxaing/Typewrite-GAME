@@ -10,15 +10,10 @@ const originalText = typewriterText.textContent.trim();
 initGame();
 // 初始化游戏
 function initGame() {
-    // 将文本分割成字符数组并用span包裹每个字符
     const characters = originalText.split('').map((char, index) => {
         return `<span class="char" data-index="${index}">${char}</span>`;
     });
-    
-    // 添加光标元素
     characters.unshift('<span class="cursor">|</span>');
-    
-    // 更新DOM
     typewriterText.innerHTML = characters.join('');
 }
 document.addEventListener('keydown', handleKeyPress);
@@ -35,11 +30,18 @@ function handleKeyPress(e) {
         }
         return; 
     }
-
+  
     if (currentPosition < originalText.length) {
         userInput += e.key; 
         currentPosition++; 
-        updateDisplay(); 
+        if (currentPosition === 1) { 
+            const typewriterTextElement = document.querySelector('.typewriter-text');
+            const firstChildSpan = typewriterTextElement.querySelector('span:first-child');
+            if (firstChildSpan) {
+                typewriterTextElement.removeChild(firstChildSpan);
+            }
+        }
+        updateDisplay();  
     }
 
     if (userInput.length > originalText.length) {
